@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--
+      Material3 深色底。本工程是「开屏即跳」的过路页，不需要 DayNight 切换，
+      固定深色可以保证跳转过程中不闪一下白底。
+    -->
+    <style name="Theme.QkJump" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#5B8CFF</item>
+        <item name="colorSecondary">#8FD8FF</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowBackground">@drawable/bg_app</item>
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="21">true</item>
+    </style>
+</resources>

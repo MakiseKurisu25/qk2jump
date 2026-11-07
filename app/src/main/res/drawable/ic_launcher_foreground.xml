@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  前景图标：一个「扫码取景框 + 中间一道闪电」的极简符号。
+  取景框表示扫一扫，闪电表示「直达」。
+  全部矢量，无位图，任何密度下都清晰。
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- 取景框四个角 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,34h12v5h-7v7h-5z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M66,34h12v12h-5v-7h-7z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,62h5v7h7v5h-12z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M73,62h5v12h-12v-5h7z" />
+
+    <!-- 中间闪电 -->
+    <path
+        android:fillColor="#8FD8FF"
+        android:pathData="M58,42l-11,17h8l-3,15 12,-18h-8z" />
+</vector>

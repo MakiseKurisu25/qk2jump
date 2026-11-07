@@ -1,0 +1,20 @@
+# Gradle
+build/
+.gradle/
+.gradle-home/
+
+# 本机 SDK 路径，不该提交
+local.properties
+
+# 产物
+*.apk
+*.aab
+*.ap_
+*.dex
+captures/
+
+# IDE
+.idea/
+*.iml
+*.hprof
+.DS_Store

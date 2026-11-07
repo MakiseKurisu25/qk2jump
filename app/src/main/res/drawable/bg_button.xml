@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 主按钮：蓝紫渐变 + 28dp 圆角，按下去变暗。 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#C04E7BE8" />
+            <corners android:radius="28dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="0"
+                android:startColor="#5B8CFF"
+                android:endColor="#7B5BFF" />
+            <corners android:radius="28dp" />
+        </shape>
+    </item>
+</selector>

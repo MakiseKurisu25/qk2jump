@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">胖乖直达</string>
+
+    <!-- ═══ 跳转页 ═══ -->
+    <string name="jump_title">胖乖直达</string>
+    <string name="jump_sub">打开本应用 = 直接进胖乖生活的扫一扫页</string>
+    <string name="jump_step_checking">正在检查胖乖生活…</string>
+    <string name="jump_step_not_installed">这台机器上没有装「胖乖生活」（com.qiekj.user）。装好再来。</string>
+    <string name="jump_step_no_entry">胖乖生活的启动入口找不到，可能是版本变了。请手动打开一次它，确认能正常进入首页。</string>
+    <string name="jump_step_no_a11y">无障碍服务没开 —— 我可以把胖乖拉起来，但没法替你点右上角那个扫描图标。\n\n开法：设置 → 无障碍 → 已下载的服务 → 「胖乖直达」→ 打开。</string>
+    <string name="jump_step_launching">正在拉起胖乖生活…</string>
+    <string name="jump_step_launched">已经跳过去了。若它停在首页没动，说明扫描图标没找到。</string>
+    <string name="jump_step_launch_failed">拉起胖乖生活失败：%1$s</string>
+    <string name="jump_step_dry_run">调试模式：只记录，不跳转、不点击。</string>
+    <string name="jump_step_retry">重试</string>
+    <string name="jump_step_settings">设置</string>
+    <string name="jump_step_open_a11y">打开无障碍设置</string>
+    <string name="jump_step_open_app">手动打开胖乖生活</string>
+
+    <!-- ═══ 设置页 ═══ -->
+    <string name="settings_title">设置</string>
+    <string name="settings_section_behavior">行为</string>
+    <string name="settings_dry_run">调试模式（只记录，不跳转、不点击）</string>
+    <string name="settings_dry_run_note">打开后每次启动只打印「会拉起谁、会点哪里」，不进胖乖、不点任何东西。调试时用它，避免误操作。</string>
+    <string name="settings_wait">进入首页后先等 %1$d 毫秒再找扫描图标</string>
+    <string name="settings_wait_note">胖乖首页有广告位，渲染慢。等太短会找不到图标，等太长又慢。默认 2500 毫秒。</string>
+    <string name="settings_window">待命窗口 %1$d 秒</string>
+    <string name="settings_window_note">只有在这个时间窗内，无障碍服务才会去点那一下。窗口外它不会碰任何界面。默认 20 秒。</string>
+
+    <string name="settings_section_a11y">无障碍</string>
+    <string name="settings_a11y_status">无障碍状态：%1$s</string>
+    <string name="settings_a11y_open">打开系统的无障碍设置</string>
+    <string name="settings_a11y_heal">尝试自动恢复授权</string>
+    <string name="settings_a11y_note">MIUI 把「从最近任务划掉卡片」当强制停止，会清空无障碍授权。拿到 WRITE_SECURE_SETTINGS 后本应用会自己写回来，该权限只能 adb 给：\nadb shell pm grant com.local.qkjump android.permission.WRITE_SECURE_SETTINGS</string>
+
+    <string name="settings_section_about">关于</string>
+    <string name="settings_about">本应用只做两件事：拉起胖乖生活的主界面（它自己 export 的入口），以及用无障碍替你在首页点一下右上角的扫描图标。\n\n扫码、识别设备、计费、出水，全部由胖乖生活与官方服务端完成。本应用不抓包、不逆向、不构造订单、不模拟支付、不碰账号与鉴权，也不保存任何 token。</string>
+    <string name="settings_last">上次结果：%1$s</string>
+    <string name="settings_reset">恢复默认</string>
+    <string name="settings_reset_confirm">把等待时间恢复为 2500 毫秒、待命窗口恢复为 20 秒，并关掉调试模式？</string>
+
+    <!-- ═══ 无障碍服务描述（系统设置里会显示） ═══ -->
+    <string name="a11y_label">胖乖直达 · 代点扫描图标</string>
+    <string name="a11y_desc">只在「胖乖生活」刚被本应用拉起后的 20 秒内工作，且只在它的首页上做一件事：点一下右上角的扫描图标。不读取、不修改任何业务数据，不涉及支付、订单、金额。</string>
+
+    <!-- ═══ Toast ═══ -->
+    <string name="toast_a11y_needed">还没开无障碍，只能拉起胖乖、没法代点扫描图标</string>
+    <string name="toast_heal_ok">无障碍授权已写回，系统通常一秒内绑定</string>
+    <string name="toast_heal_failed">写回失败，请手动到系统设置里打开</string>
+    <string name="toast_heal_no_perm">没有 WRITE_SECURE_SETTINGS 权限，只能手动开</string>
+</resources>

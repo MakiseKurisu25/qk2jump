@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  QkJump —— 一个只有一件事的应用：打开它，就直接进到「胖乖生活」自己的扫一扫页。
+
+  它不做的事（与 V1 一脉相承的红线）：
+    · 不抓包、不逆向、不调任何私有接口
+    · 不构造订单、不模拟支付、不伪造任何指令
+    · 不碰账号与鉴权，不存 token
+
+  它做的事只有两件，且都走公开路径：
+    1. 用 android.intent.action.MAIN 拉起胖乖生活的主界面（这是它自己 export 的入口）；
+    2. 用系统无障碍服务，替用户点一下首页右上角那个扫描图标（就是用户平时手点的那一下）。
+  点完之后，扫码、识别设备、计费、出水，全部由胖乖生活自己和官方服务端完成。
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 只有这一条权限需要 adb 手动授予：用于在无障碍授权被系统清掉后自动写回。
+         不授予也能用，只是每次要自己进系统设置重新打开无障碍。 -->
+    <uses-permission
+        android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+
+    <!-- Android 11 起默认看不到别的应用。不声明这一段，getPackageInfo / 拉起都会失败。 -->
+    <queries>
+        <package android:name="com.qiekj.user" />
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.QkJump">
+
+        <!-- 唯一入口。打开它就直接开始跳。 -->
+        <activity
+            android:name=".JumpActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.QkJump">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 设置页：调试开关、等待时长、无障碍授权状态。exported=false，只能从本应用进。 -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:label="@string/settings_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.QkJump" />
+
+        <!-- 无障碍服务：唯一的作用是「在胖乖首页上点一下扫描图标」。
+             再往后的任何点击它都不做 —— 扫码之后是胖乖和官方服务端的事。 -->
+        <service
+            android:name=".ScanTapService"
+            android:exported="false"
+            android:label="@string/a11y_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+    </application>
+</manifest>

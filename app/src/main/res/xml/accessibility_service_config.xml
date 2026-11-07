@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  无障碍服务配置。
+  范围收得很窄：只监听窗口状态 / 窗口内容 / 滚动三种事件（本应用不需要别的），
+  不要「触摸探索」、不要「检索交互窗口」以外的能力。
+  canPerformGestures 是必需的：胖乖首页那一排图标外层不一定 clickable，
+  必须能用手势坐标点下去（实测过）。
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowStateChanged|typeWindowContentChanged|typeViewScrolled"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagReportViewIds|flagIncludeNotImportantViews"
+    android:canPerformGestures="true"
+    android:canRetrieveWindowContent="true"
+    android:description="@string/a11y_desc"
+    android:notificationTimeout="100"
+    android:settingsActivity="com.local.qkjump.SettingsActivity" />
